@@ -1,0 +1,34 @@
+gazebo_MARS_prototype:
+      gazebo_MARS_joint_controller:
+        type: "position_controllers/JointTrajectoryController"
+        joints:
+          - base_link_to_base_cylinder
+          - base_cylinder_to_link2
+          - link_2_to_link_3
+          - link_3_to_link_4
+          - link_4_to_gripper_base
+
+        pid_gains:
+          base_link_to_base_cylinder: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+          base_cylinder_to_link2: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+          link_2_to_link_3: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+          link_3_to_link_4: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+          link_4_to_gripper_base: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+          
+
+      gripper_controller:
+        type: "position_controllers/JointTrajectoryController"
+        joints:
+          - gripper_base_to_finger_base1
+          - finger_base1_to_finger_top1
+          - gripper_base_to_finger_base2
+          - finger_base2_to_finger_top2
+          - gripper_base_to_finger_base3
+          - finger_base3_to_finger_top3
+        pid_gains:
+          gripper_base_to_finger_base1:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+          finger_base1_to_finger_top1: {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+          gripper_base_to_finger_base2: {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+          finger_base2_to_finger_top2: {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+          gripper_base_to_finger_base3: {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+          finger_base3_to_finger_top3: {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}

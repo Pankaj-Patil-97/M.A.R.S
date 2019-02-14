@@ -1,0 +1,44 @@
+gazebo_M.A.R.S_prototype:
+# MoveIt-specific simulation settings
+  moveit_sim_hw_interface:
+    joint_model_group: controllers_initial_group_
+    joint_model_group_pose: controllers_initial_pose_
+# Settings for ros_control control loop
+  generic_hw_control_loop:
+    loop_hz: 300
+    cycle_time_error_threshold: 0.01
+# Settings for ros_control hardware interface
+  hardware_interface:
+    joints:
+      - base_link_to_base_cylinder
+      - base_cylinder_to_link2
+      - link_2_to_link_3
+      - link_3_to_link_4
+      - link_4_to_gripper_base
+      - gripper_base_to_finger_base1
+      - finger_base1_to_finger_top1
+      - gripper_base_to_finger_base2
+      - finger_base2_to_finger_top2
+      - gripper_base_to_finger_base3
+      - finger_base3_to_finger_top3
+      - base_link_to_wheel1
+      - base_link_to_wheel2
+      - base_link_to_wheel3
+      - base_link_to_wheel4
+    sim_control_mode: 1  # 0: position, 1: velocity
+# Publish all joint states
+# Creates the /joint_states topic necessary in ROS
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+  controller_list:
+    - name: moveit_mars_controller
+      action_ns: follow_joint_trajectory
+      default: True
+      type: FollowJointTrajectory
+      joints:
+        - base_link_to_base_cylinder
+        - base_cylinder_to_link2
+        - link_2_to_link_3
+        - link_3_to_link_4
+        - link_4_to_gripper_base

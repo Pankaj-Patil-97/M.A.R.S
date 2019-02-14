@@ -1,0 +1,8 @@
+controller_list:
+  - name: fake_moveit_mars_controller
+    joints:
+      - base_link_to_base_cylinder
+      - base_cylinder_to_link2
+      - link_2_to_link_3
+      - link_3_to_link_4
+      - link_4_to_gripper_base

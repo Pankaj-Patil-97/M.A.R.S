@@ -1,0 +1,21 @@
+<launch>
+
+
+  <!-- Launch Gazebo  -->
+  
+  <include file="$(find learning_urdf_simulations)/launch/control_gazebo_mars.launch" />   
+  <group ns="/gazebo_MARS_prototype">
+  <!-- ros_control seven dof arm launch file -->
+  <!--<include file="$(find learning_urdf_simulations)/launch/seven_dof_arm_gazebo_states.launch" /> -->   
+
+  <!-- ros_control position control dof arm launch file -->
+  <!--<include file="$(find seven_dof_arm_gazebo)/launch/seven_dof_arm_gazebo_position.launch" />  -->
+
+  <!-- ros_control trajectory control dof arm launch file -->
+  <include file="$(find learning_urdf_simulations)/launch/gazebo_mars_trajectory_controller.launch" />    
+
+  <!-- moveit launch file -->
+  <include file="$(find mars_moveit)/launch/moveit_planning_execution.launch" />    
+  </group>
+
+</launch>

@@ -1,0 +1,22 @@
+<launch>
+            
+        
+        <!-- INCLUDE GAZEBO LAUNCH FILE -->
+        <include file="$(find learning_urdf_simulations)/launch/gazebo_M.A.R.S.launch"/>
+        <group ns="/gazebo_MARS_prototype">
+        <!-- LAUNCH YAML FILE -->
+        <rosparam file="$(find learning_urdf_simulations)/config/gazebo_M.A.R.S_prototype_control.yaml" command="load" ns="/gazebo_MARS_prototype"/>
+        <rosparam file="$(find learning_urdf_simulations)/config/joint_state_controller.yaml" command="load" ns="/gazebo_MARS_prototype"/>
+    
+        <!-- LOADING CONTROLLERS -->
+       <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/gazebo_MARS_prototype" args=" joint_state_controller base_link_to_base_cylinder_position_controller base_cylinder_to_link_2_joint_position_controller link_2_to_link_3_position_controller link_3_to_link_4_position_controller link_4_to_gripper_base_position_controller"/>
+    
+    <!-- MAPPING JOINT STATE TO TRANSFORM FOR RVIZ -->
+        
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+        <remap from="/joint_states" to="/gazebo_MARS_prototype/joint_states"/>
+        </node>
+        </group>
+</launch>
+   

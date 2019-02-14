@@ -1,0 +1,10 @@
+<launch>
+    <!--<group name="/gazebo_MARS_prototype"> -->
+    <rosparam file="$(find learning_urdf_simulations)/config/joint_state_controller.yaml" command="load" ns="/gazebo_MARS_prototype"/>
+	<rosparam file="$(find learning_urdf_simulations)/config/trajectory_control.yaml" command="load" ns="/gazebo_MARS_prototype"/>
+
+    <node name="mars_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+      output="screen" ns="/gazebo_MARS_prototype" args="gazebo_MARS_joint_controller gripper_controller"/>
+    <!--</group> -->
+
+</launch>

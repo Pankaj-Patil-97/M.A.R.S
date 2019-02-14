@@ -1,0 +1,28 @@
+gazebo_MARS_prototype:
+        #Position controller using pid to control joints 
+    base_link_to_base_cylinder_position_controller :
+      type: position_controllers/JointPositionController
+      joint: base_link_to_base_cylinder
+      pid: {p: 100.0, i: 0.01, d: 10.0}
+
+    base_cylinder_to_link_2_joint_position_controller :
+      type: position_controllers/JointPositionController
+      joint: base_cylinder_to_link2
+      pid: {p: 100.0, i: 0.01, d: 10.0}
+
+    link_2_to_link_3_position_controller :
+      type: position_controllers/JointPositionController
+      joint: link_2_to_link_3
+      pid: {p: 100, i: 0.01, d: 10.0}
+
+    link_3_to_link_4_position_controller :
+      type: position_controllers/JointPositionController
+      joint: link_3_to_link_4
+      pid: {p: 100, i: 0.01, d: 10.0}
+
+    link_4_to_gripper_base_position_controller :
+      type: position_controllers/JointPositionController
+      joint: link_4_to_gripper_base
+      pid: {p: 100, i: 0.01, d: 10.0}
+
+
